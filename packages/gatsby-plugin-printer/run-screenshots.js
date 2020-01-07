@@ -33,7 +33,7 @@ function waitForNetworkIdle(page, timeout, maxInflightRequests = 0) {
       timeoutId = setTimeout(onTimeoutDone, timeout);
   }
 }
-const runScreenshots = async ({ data, code }, puppeteerLaunchOptions = {}) => {
+const runScreenshots = async ({ data, code }, puppeteerLaunchOptions = {args: ['--no-sandbox', '--disable-setuid-sandbox']}) => {
   const browser = await puppeteer.launch(puppeteerLaunchOptions);
   const page = await browser.newPage();
   const html = `
